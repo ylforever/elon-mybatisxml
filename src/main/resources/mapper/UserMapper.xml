@@ -3,6 +3,10 @@
 <mapper namespace="com.elon.mapper.IUserMapper">
 
     <select id="queryUserInfo" resultType="java.util.Map">
-        select id, name, age from tbl_user;
+        select id, name, age from t_user;
     </select>
+
+    <update id="executeUpdateSql">
+        ${sql}
+    </update>
 </mapper>

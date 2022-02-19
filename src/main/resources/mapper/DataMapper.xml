@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.elon.mapper.DataMapper">
+    <!--批量插入数据-->
+    <insert id="batchInsertData" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO ${tableName}
+        <foreach item = "field" collection="fieldNameList" open="(" separator="," close=")">
+            ${field}
+        </foreach>
+        VALUES
+        <foreach item="record" collection="list" separator=",">
+            <foreach item="data" collection="record.dataList" open="(" separator="," close=")">
+                #{data}
+            </foreach>
+        </foreach>
+    </insert>
+</mapper>
